@@ -1,40 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:alpha="0.1"
+    android:background="@drawable/wallmart_bg"
+    android:gravity="center"
+    android:orientation="vertical">
 
+    <LinearLayout
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center">
 
     <Spinner
         android:id="@+id/country_list"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        >
-    </Spinner>
+        android:background="@android:drawable/spinner_dropdown_background"
+        android:layout_centerInParent="true"></Spinner>
+
     <Spinner
         android:id="@+id/state_list"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_alignBaseline="@id/country_list"
+        android:dropDownSelector="@android:drawable/list_selector_background"
+        android:background="@android:drawable/spinner_dropdown_background"
         android:layout_centerInParent="true"
-        android:layout_alignBaseline="@id/country_list">
-    </Spinner>
+        android:layout_marginTop="40dp"></Spinner>
+    </LinearLayout>
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/applyButton"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:layout_alignBottom="@+id/state_list">
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="false"
+        android:layout_alignParentLeft="false"
+        android:layout_alignParentRight="false"
+        android:layout_alignParentStart="false"
+        android:layout_alignParentTop="false"
+        android:layout_centerInParent="false"
+        android:background="@android:drawable/dialog_holo_light_frame"
+        android:text="Apply"
+        android:textColor="@android:color/black" />
 
-        <Button
-            android:id="@+id/applyButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Apply" />
 
-    </RelativeLayout>
-
-
-
-</LinearLayout>
+</RelativeLayout>
