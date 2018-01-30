@@ -1,0 +1,28 @@
+{
+  "country": [
+    {
+      "name": "United States",
+      "states": [
+        "Miami",
+        "New York",
+        "Los Angeles"
+      ]
+    },
+    {
+      "name": "India",
+      "states": [
+        "Maharashtra",
+        "Uttarakhand",
+        "Punjab"
+      ]
+    },
+    {
+      "name": "Australia",
+      "states": [
+        "New South Wales",
+        "Victoria",
+        "Melbourne"
+      ]
+    }
+  ]
+}

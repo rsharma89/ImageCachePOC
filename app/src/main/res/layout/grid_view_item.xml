@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="16dp"
+    android:layout_gravity="center"
+    android:layout_height="wrap_content">
+
+   <android.support.constraint.ConstraintLayout
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       >
+
+      <TextView
+          android:id="@+id/product_tag"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginEnd="8dp"
+          android:gravity="end"
+          android:text="Sample"
+          app:layout_constraintEnd_toEndOf="parent" />
+
+      <ImageView
+          android:id="@+id/product_image"
+          android:layout_width="250dp"
+          android:layout_height="250dp"
+          android:layout_marginTop="16dp"
+          android:background="@drawable/ic_launcher_background"
+          android:scaleType="fitXY"
+          app:layout_constraintTop_toBottomOf="@+id/product_tag" />
+
+      <TextView
+          android:id="@+id/prod_description"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:paddingTop="8dp"
+          android:text="asdasd adasd asd asda dsad adkasdka k"
+          app:layout_constraintTop_toBottomOf="@id/product_image"
+          app:layout_constraintBottom_toBottomOf="parent"
+          android:layout_marginTop="8dp"/>
+
+      <LinearLayout
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          app:layout_constraintTop_toBottomOf="parent"
+          app:layout_constraintVertical_chainStyle="packed">
+      <TextView
+          android:id="@+id/last_price"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="$120"
+          app:layout_constraintBottom_toBottomOf="@+id/final_price"
+          app:layout_constraintRight_toLeftOf="@+id/final_price"
+          />
+
+      <TextView
+          android:id="@+id/final_price"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="$80"
+          app:layout_constraintRight_toRightOf="parent"
+          app:layout_constraintStart_toEndOf="@id/last_price"/>
+      </LinearLayout>
+
+
+   </android.support.constraint.ConstraintLayout>
+
+</android.support.v7.widget.CardView>
