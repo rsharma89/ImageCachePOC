@@ -15,6 +15,7 @@ import android.widget.GridView;
 import android.widget.Spinner;
 
 import com.example.rakesh.myapplication.InteractorImpl;
+import com.example.rakesh.myapplication.LandingActivity;
 import com.example.rakesh.myapplication.R;
 import com.example.rakesh.myapplication.adapter.CategoryListAdapter;
 import com.example.rakesh.myapplication.adapter.ProductListAdapter;
@@ -37,6 +38,7 @@ public class FeaturedItemFragment extends Fragment implements FeaturedItemFragme
     private Context mContext;
     private RecyclerView recyclerView;
     private ArrayList<Content> categoryList;
+    private RecyclerView.LayoutManager layoutManager;
 
     @Override
     public void onAttach(Context context) {
@@ -47,8 +49,11 @@ public class FeaturedItemFragment extends Fragment implements FeaturedItemFragme
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
+//        showProgressDialog();
+        Util.showDialog();
         View view = inflater.inflate(R.layout.featured_item,container,false);
         featuredItemPresenter = new FeaturedItemFragmentPresenterImpl(this,new InteractorImpl());
+        ((LandingActivity)mContext).showToolbar();
         featuredItemPresenter.fetchCategoryList();
         featuredItemPresenter.fetchProductData("");
         initUI(view);
@@ -61,7 +66,9 @@ public class FeaturedItemFragment extends Fragment implements FeaturedItemFragme
         recyclerView.setHasFixedSize(true);
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(mContext,2);
         recyclerView.setLayoutManager(layoutManager);
+
     }
+
 
     @Override
     public void loadCategoryData(ArrayList<Content> list) {
@@ -85,17 +92,30 @@ public class FeaturedItemFragment extends Fragment implements FeaturedItemFragme
     public void loadProductData(ArrayList<ProductAttribute> productList) {
         ProductListAdapter productListAdapter = new ProductListAdapter(mContext,productList);
         recyclerView.setAdapter(productListAdapter);
+        Util.hideDialog();
+//        hideProgressBar();
     }
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+        int id = adapterView.getId();
+        switch (id){
+            case R.id.category_list:
+                String contentId = Integer.toString(categoryList.get(i).getId());
+                featuredItemPresenter.fetchProductData(contentId);
+            break;
+            default:
+            break;
 
-        String contentId = Integer.toString(categoryList.get(i).getId());
-        featuredItemPresenter.fetchProductData(contentId);
+
+
+        }
     }
 
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
 
     }
+
+
 }

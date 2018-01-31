@@ -1,5 +1,6 @@
 package com.example.rakesh.myapplication.helper;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.support.v7.app.AlertDialog;
 
@@ -16,8 +17,12 @@ public class Util {
     private static Context mContext;
     private static AlertDialog.Builder mProgress;
     private static AlertDialog dialog;
+    private static ProgressDialog progressBar;
+    public static String PROD_DESC = "PROD_DESC";
+    public static String PROD_AMOUNT = "PROD_PRICE";
+    public static String PROD_IMAGE = "PROD_IMAGE";
 
-    public static String loadJSONFromAsset(Context context){
+    public static String loadJSONFromAsset(Context context){//TODO
         String jsonString = null;
         try {
             InputStream is = getContext().getAssets().open("countries.json");
@@ -50,18 +55,20 @@ public class Util {
     }
 
     public static void showDialog(){
-        if(dialog!=null && dialog.isShowing()) {
-            mProgress = new AlertDialog.Builder(getContext());
-            mProgress.setMessage("Content is loading")
-                    .setTitle("Please Wait");
-            dialog = mProgress.create();
-            dialog.show();
+
+        if(getContext()!=null){
+            progressBar = new ProgressDialog(getContext());
+            progressBar.setMessage("Please wait...");
+            progressBar.setTitle("Content is loading");
+            progressBar.setCancelable(false);
+            progressBar.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+            progressBar.show();
         }
     }
 
     public static void hideDialog(){
-        if(dialog!=null) {
-            dialog.dismiss();
+        if(progressBar!=null) {
+            progressBar.dismiss();
         }
     }
 

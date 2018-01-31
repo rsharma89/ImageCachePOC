@@ -57,14 +57,13 @@ public class CountryListAdapter extends BaseAdapter {
             view = LayoutInflater.from(mContext).inflate(android.R.layout.simple_spinner_dropdown_item,viewGroup,false);
         }
         TextView textView = (TextView)view.findViewById(android.R.id.text1);
-        if(i==0){
-            textView.setTextColor(Color.GRAY);
-        }else{
-            textView.setTextColor(Color.BLACK);
-        }
+        textView.setTextColor(Color.BLACK);
         textView.setText(countryList.get(i).getName());
         return view;
     }
 
-
+    @Override
+    public View getDropDownView(int position, View convertView, ViewGroup parent) {
+        return super.getDropDownView(position, convertView, parent);
+    }
 }

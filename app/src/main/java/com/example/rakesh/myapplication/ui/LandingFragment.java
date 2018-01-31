@@ -2,8 +2,11 @@ package com.example.rakesh.myapplication.ui;
 
 import android.app.Fragment;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +16,7 @@ import android.widget.Button;
 import android.widget.Spinner;
 
 import com.example.rakesh.myapplication.InteractorImpl;
+import com.example.rakesh.myapplication.LandingActivity;
 import com.example.rakesh.myapplication.R;
 import com.example.rakesh.myapplication.adapter.CountryListAdapter;
 import com.example.rakesh.myapplication.helper.Util;
@@ -44,9 +48,9 @@ public class LandingFragment extends Fragment implements View.OnClickListener,La
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-
         View view = inflater.inflate(R.layout.landing_page,container,false);
         presenter = new LandingFragmentPresenterImpl(this,new InteractorImpl());
+        ((LandingActivity)mContext).hideToolbar();
         initUI(view);
         return view;
     }
@@ -56,6 +60,7 @@ public class LandingFragment extends Fragment implements View.OnClickListener,La
         countrySpinner = (Spinner)view.findViewById(R.id.country_list);
         stateSpinner = (Spinner)view.findViewById(R.id.state_list);
         stateSpinner.setEnabled(false);
+        stateSpinner.setClickable(false);
         presenter.mapCountryListToSpiner();
         applyBtn = (Button)view.findViewById(R.id.applyButton);
         applyBtn.setOnClickListener(this);
@@ -116,6 +121,5 @@ public class LandingFragment extends Fragment implements View.OnClickListener,La
 
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
-
     }
 }

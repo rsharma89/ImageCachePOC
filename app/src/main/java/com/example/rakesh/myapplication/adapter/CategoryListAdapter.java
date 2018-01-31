@@ -8,8 +8,10 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.example.rakesh.myapplication.R;
 import com.example.rakesh.myapplication.model.Category;
 import com.example.rakesh.myapplication.model.Content;
+import com.example.rakesh.myapplication.ui.ProductDetailFragment;
 
 import java.util.ArrayList;
 
@@ -61,6 +63,7 @@ public class CategoryListAdapter extends BaseAdapter {
         }
         textView = (TextView)view.findViewById(android.R.id.text1);
         textView.setText(mList.get(i).getDisplayName());
+
         return view;
     }
 }

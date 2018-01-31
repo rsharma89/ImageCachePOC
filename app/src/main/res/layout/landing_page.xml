@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
+    android:background="#A9EDF9"
     android:orientation="vertical">
 
     <LinearLayout
@@ -10,24 +11,22 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="@drawable/wallmart_bg1"
         android:gravity="center">
 
     <Spinner
         android:id="@+id/country_list"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:background="@android:drawable/spinner_dropdown_background"
-        style="@android:style/Widget.Material.DropDownItem.Spinner"
+        style="@style/Base.Widget.AppCompat.Spinner.Underlined"
         android:layout_centerInParent="true"></Spinner>
 
     <Spinner
         android:id="@+id/state_list"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
+        android:defaultFocusHighlightEnabled="false"
         android:layout_alignBaseline="@id/country_list"
-        android:background="@android:drawable/spinner_dropdown_background"
-        style="@android:style/Widget.Material.DropDownItem.Spinner"
+        style="@style/Base.Widget.AppCompat.Spinner.Underlined"
         android:layout_centerInParent="true"
         android:layout_marginTop="40dp"></Spinner>
     </LinearLayout>
