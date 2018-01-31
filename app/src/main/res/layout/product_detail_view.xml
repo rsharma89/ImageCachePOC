@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_marginTop="?attr/actionBarSize"
+    android:layout_height="match_parent">
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/view_pager"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="32dp" >
+
+    <android.support.v4.view.PagerTabStrip
+        android:id="@+id/pager_title_strip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:background="#33b5e5"
+        android:paddingBottom="4dp"
+        android:paddingTop="4dp"
+        android:textColor="#fff" />
+    </android.support.v4.view.ViewPager>
+
+
+    <android.support.v4.view.ViewPager
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/pager"
+        android:layout_centerInParent="true"
+        android:layout_below="@+id/view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="250dp" />
+
+    <LinearLayout
+        android:layout_centerInParent="true"
+        android:id="@+id/pager_dots"
+        android:layout_below="@+id/pager"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/prod_desc_container"
+        android:layout_below="@+id/pager_dots"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        >
+
+    <TextView
+        android:id="@+id/prod_detail_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        style="@android:style/TextAppearance"
+        android:textSize="16dp"
+        android:text="dasdasdasdas">
+
+    </TextView>
+    <TextView
+        android:id="@+id/product_amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        style="@android:style/TextAppearance"
+        android:textSize="14dp"
+        android:text="$100">
+
+    </TextView>
+    <TextView
+        android:id="@+id/prod_offer_text"
+        android:layout_width="wrap_content"
+        android:text="Add one more item to get one item free"
+        android:textSize="12dp"
+        android:textColor="@android:color/holo_green_dark"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp">
+
+    </TextView>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_below="@+id/prod_desc_container"
+        android:orientation="horizontal">
+        <ImageView
+            android:id="@+id/decrement_product"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:padding="10dp"
+            android:layout_gravity="center"
+            android:background="@drawable/minus_img"/>
+        <Button
+            android:id="@+id/product_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1"/>
+
+        <ImageView
+            android:id="@+id/increment_producr"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:background="@drawable/plus_img"
+            android:baselineAlignBottom="true"
+            android:padding="10dp" />
+
+
+    </LinearLayout>
+    <Button
+    android:id="@+id/addProduct"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    style="@android:style/Widget.Material.Button.Borderless"
+    android:layout_alignParentBottom="true"
+    android:layout_alignParentEnd="false"
+    android:layout_alignParentLeft="false"
+    android:layout_alignParentRight="false"
+    android:layout_alignParentStart="false"
+    android:layout_alignParentTop="false"
+    android:layout_centerInParent="false"
+    android:background="#FF06b0e6"
+    android:text="Apply"
+    android:textColor="@android:color/white" />
+
+
+</RelativeLayout>
