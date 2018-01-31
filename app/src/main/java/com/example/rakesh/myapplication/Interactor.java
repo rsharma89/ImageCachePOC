@@ -10,5 +10,5 @@ public interface Interactor {
 
     public void getCountryList(CallBackListener listener);
     public void getCategoryList(CallBackListener listener);
-    public void populateCategoryData(CallBackListener listener, String categoryId);
+    public void getCategoryData(CallBackListener listener, String categoryId);
 }

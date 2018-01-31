@@ -1,6 +1,7 @@
 package com.example.rakesh.myapplication.helper;
 
 import android.content.Context;
+import android.support.v7.app.AlertDialog;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -13,6 +14,8 @@ import java.util.ArrayList;
 public class Util {
 
     private static Context mContext;
+    private static AlertDialog.Builder mProgress;
+    private static AlertDialog dialog;
 
     public static String loadJSONFromAsset(Context context){
         String jsonString = null;
@@ -44,6 +47,22 @@ public class Util {
 
     public static Context getContext(){
         return mContext;
+    }
+
+    public static void showDialog(){
+        if(dialog!=null && dialog.isShowing()) {
+            mProgress = new AlertDialog.Builder(getContext());
+            mProgress.setMessage("Content is loading")
+                    .setTitle("Please Wait");
+            dialog = mProgress.create();
+            dialog.show();
+        }
+    }
+
+    public static void hideDialog(){
+        if(dialog!=null) {
+            dialog.dismiss();
+        }
     }
 
 //    public static ArrayList getCountryList(){

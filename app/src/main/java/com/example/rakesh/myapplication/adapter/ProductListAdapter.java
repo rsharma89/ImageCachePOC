@@ -8,8 +8,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.android.volley.toolbox.NetworkImageView;
 import com.example.rakesh.myapplication.R;
 import com.example.rakesh.myapplication.model.ProductAttribute;
+import com.example.rakesh.myapplication.network.VolleyNetworkRequest;
 
 import java.util.ArrayList;
 
@@ -20,9 +22,10 @@ import java.util.ArrayList;
 public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.ViewHolder>{
 
     private Context mContext;
-    private ArrayList mList;
+    private ArrayList<ProductAttribute> mList;
+    private static final String BASE_URL = "http://static-data.surge.sh";
 
-    public ProductListAdapter(Context context, ArrayList list){
+    public ProductListAdapter(Context context, ArrayList<ProductAttribute> list){
         mContext = context;
         mList = list;
     }
@@ -36,6 +39,11 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
+        String prodId = mList.get(position).getProductId();
+        String imgUrl = mList.get(position).getProductImageUrl().replace("{product.id}",prodId);
+        String finalUrl = BASE_URL+imgUrl;
+        holder.mItemImage.setImageUrl(finalUrl, VolleyNetworkRequest.getInstance(mContext).getImageLoader());
+        holder.txtDescription.setText(mList.get(position).getProductDescription());
     }
 
     @Override
@@ -44,11 +52,11 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        public ImageView mItemImage;
+        public NetworkImageView mItemImage;
         public TextView txtTag,txtDescription,txtLastPrice,txtFinalPrice;
         public ViewHolder(View itemView) {
             super(itemView);
-            mItemImage = (ImageView)itemView.findViewById(R.id.product_image);
+            mItemImage = (NetworkImageView)itemView.findViewById(R.id.product_image);
             txtTag = (TextView)itemView.findViewById(R.id.product_tag);
             txtDescription = (TextView)itemView.findViewById(R.id.prod_description);
             txtFinalPrice = (TextView)itemView.findViewById(R.id.final_price);

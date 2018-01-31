@@ -1,6 +1,7 @@
 package com.example.rakesh.myapplication.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,11 +43,25 @@ public class CountryListAdapter extends BaseAdapter {
     }
 
     @Override
+    public boolean isEnabled(int position) {
+        if(position==0){
+            return false;
+        }else{
+            return true;
+        }
+    }
+
+    @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         if(view==null){
             view = LayoutInflater.from(mContext).inflate(android.R.layout.simple_spinner_dropdown_item,viewGroup,false);
         }
         TextView textView = (TextView)view.findViewById(android.R.id.text1);
+        if(i==0){
+            textView.setTextColor(Color.GRAY);
+        }else{
+            textView.setTextColor(Color.BLACK);
+        }
         textView.setText(countryList.get(i).getName());
         return view;
     }

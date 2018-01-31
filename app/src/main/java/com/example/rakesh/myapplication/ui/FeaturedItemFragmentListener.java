@@ -1,6 +1,8 @@
 package com.example.rakesh.myapplication.ui;
 
 import com.example.rakesh.myapplication.model.Category;
+import com.example.rakesh.myapplication.model.Content;
+import com.example.rakesh.myapplication.model.ProductAttribute;
 
 import java.util.ArrayList;
 
@@ -10,8 +12,8 @@ import java.util.ArrayList;
 
 public interface FeaturedItemFragmentListener {
 
-    void loadCategoryData(ArrayList<Category> list);
+    void loadCategoryData(ArrayList<Content> list);
     void showProgressDialog();
     void hideProgressBar();
-    void loadProductData();
+    void loadProductData(ArrayList<ProductAttribute> productList);
 }

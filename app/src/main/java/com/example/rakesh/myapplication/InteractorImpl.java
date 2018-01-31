@@ -27,7 +27,7 @@ public class InteractorImpl implements Interactor {
     }
 
     @Override
-    public void populateCategoryData(CallBackListener listener, String categoryId) {
+    public void getCategoryData(CallBackListener listener, String categoryId) {
         serviceClass = new BabyPinkServiceClass();
         serviceClass.getCategoryData(listener,categoryId);
     }

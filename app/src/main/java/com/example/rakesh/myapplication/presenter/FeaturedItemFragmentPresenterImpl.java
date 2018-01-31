@@ -1,12 +1,10 @@
 package com.example.rakesh.myapplication.presenter;
 
-import android.app.AlertDialog;
-import android.content.Context;
-
 import com.example.rakesh.myapplication.CallBackListener;
 import com.example.rakesh.myapplication.InteractorImpl;
 import com.example.rakesh.myapplication.model.Category;
-import com.example.rakesh.myapplication.ui.FeaturedItemFragment;
+import com.example.rakesh.myapplication.model.Content;
+import com.example.rakesh.myapplication.model.ProductAttribute;
 import com.example.rakesh.myapplication.ui.FeaturedItemFragmentListener;
 
 import java.util.ArrayList;
@@ -27,12 +25,12 @@ public class FeaturedItemFragmentPresenterImpl implements FeaturedItemPresenter 
 
 
     @Override
-    public void fetchFeaturedList(String categoryId) {
+    public void fetchProductData(String categoryId) {
         mListener.showProgressDialog();
-        mInteractor.populateCategoryData(new CallBackListener() {
+        mInteractor.getCategoryData(new CallBackListener() {
             @Override
             public void onSuccess(Object data) {
-
+                mListener.loadProductData((ArrayList<ProductAttribute>)data);
             }
 
             @Override
@@ -50,7 +48,7 @@ public class FeaturedItemFragmentPresenterImpl implements FeaturedItemPresenter 
             @Override
             public void onSuccess(Object data) {
                 mListener.hideProgressBar();
-                mListener.loadCategoryData((ArrayList<Category>)data);
+                    mListener.loadCategoryData((ArrayList<Content>) data);
             }
 
             @Override

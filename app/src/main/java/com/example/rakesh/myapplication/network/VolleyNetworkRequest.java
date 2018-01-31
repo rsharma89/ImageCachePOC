@@ -3,9 +3,11 @@ package com.example.rakesh.myapplication.network;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.support.v4.util.LruCache;
+import android.util.Log;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
+import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.Volley;
 
@@ -42,9 +44,13 @@ public class VolleyNetworkRequest {
         }
 
         public static synchronized VolleyNetworkRequest getInstance(Context context) {
+
             if (mInstance == null) {
                 mInstance = new VolleyNetworkRequest(context);
             }
+            VolleyLog.setTag("Volley");
+            VolleyLog.DEBUG = true;
+            Log.isLoggable("Volley", Log.VERBOSE);
             return mInstance;
         }
 

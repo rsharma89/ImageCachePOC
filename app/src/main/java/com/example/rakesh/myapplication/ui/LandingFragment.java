@@ -93,7 +93,7 @@ public class LandingFragment extends Fragment implements View.OnClickListener,La
     @Override
     public void onBtnClick() {
         FeaturedItemFragment featuredItemFragment = new FeaturedItemFragment();
-        getFragmentManager().beginTransaction().replace(R.id.container,featuredItemFragment).commit();
+        getFragmentManager().beginTransaction().addToBackStack("LandingFragment.class").replace(R.id.container,featuredItemFragment).commit();
     }
 
     @Override

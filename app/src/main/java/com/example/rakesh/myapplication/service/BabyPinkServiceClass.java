@@ -4,11 +4,13 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.rakesh.myapplication.CallBackListener;
 import com.example.rakesh.myapplication.helper.Util;
 import com.example.rakesh.myapplication.model.Category;
+import com.example.rakesh.myapplication.model.Content;
 import com.example.rakesh.myapplication.model.Country;
 import com.example.rakesh.myapplication.model.ListPojo;
 import com.example.rakesh.myapplication.model.ProdutDetail;
@@ -23,6 +25,8 @@ import org.json.JSONObject;
 
 public class BabyPinkServiceClass {
 
+    private static final String BASE_URL = "http://static-data.surge.sh";
+
     public void getCountryList(CallBackListener listener){
         ListPojo country = new Gson().fromJson(Util.loadJSONFromAsset(Util.getContext()), ListPojo.class);
         if(country!=null){
@@ -34,15 +38,15 @@ public class BabyPinkServiceClass {
 
     public void getCategoryList(final CallBackListener listener){
         RequestQueue queue = Volley.newRequestQueue(Util.getContext());
-        String url ="http://static-data.surge.sh/categories.json";
+        String url =BASE_URL+"/categories.json";
 
         JsonObjectRequest jsObjRequest = new JsonObjectRequest
                 (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
 
                     @Override
                     public void onResponse(JSONObject response) {
-                        Category country = new Gson().fromJson(response.toString(), Category.class);
-                        listener.onSuccess(country.getContents());
+                        Category category = new Gson().fromJson(response.toString(), Category.class);
+                        listener.onSuccess(category.getContents());
                     }
                 }, new Response.ErrorListener() {
 
@@ -58,9 +62,15 @@ public class BabyPinkServiceClass {
 
     public void getCategoryData(final CallBackListener listener, String categoryId){
         RequestQueue queue = Volley.newRequestQueue(Util.getContext());
+        String endUrlTemp = "/products/products.101.json";
+        StringBuffer stringBuffer = new StringBuffer(endUrlTemp);
+        String endUrl = null;
         String url = null;
         if(categoryId!=null&&categoryId.length()>0){
-            url = "http://static-data.surge.sh/products/products.+categoryId.json";
+            endUrl = stringBuffer.replace(19,22,categoryId).toString();
+            url = BASE_URL+endUrl;
+        }else{
+            url = BASE_URL+endUrlTemp;
         }
 
         JsonObjectRequest jsObjRequest = new JsonObjectRequest
@@ -69,7 +79,7 @@ public class BabyPinkServiceClass {
                     @Override
                     public void onResponse(JSONObject response) {
                         ProdutDetail produtDetail = new Gson().fromJson(response.toString(), ProdutDetail.class);
-                        listener.onSuccess(produtDetail);
+                        listener.onSuccess(produtDetail.getRecords().get(0).getAttributes().getRecords());
                     }
                 }, new Response.ErrorListener() {
 

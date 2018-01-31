@@ -1,6 +1,12 @@
 {
   "country": [
     {
+      "name": "Select Country",
+      "states": [
+        "Select State"
+      ]
+    },
+    {
       "name": "United States",
       "states": [
         "Miami",

@@ -6,6 +6,6 @@ package com.example.rakesh.myapplication.presenter;
 
 public interface FeaturedItemPresenter {
 
-    void fetchFeaturedList(String id);
+    void fetchProductData(String id);
     void fetchCategoryList();
 }
